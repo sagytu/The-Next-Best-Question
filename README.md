@@ -3,7 +3,7 @@
 The source code for TNBQ presented in *The Next Best Question: A Lazy-Anytime Framework for Adaptive Feature Acquisition* 
 
 **Instructions:**
-- Download the data set from the links in each relevant folder.
+- Download the data sets from the links in each relevant folder.
 - Run `python main.py` using the following flags
   - `--dataset` - the dataset name, 
   - `--method` - the method, out of 4 options `TNBQ`, `weighted`, `radius`, `global`
