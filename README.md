@@ -6,7 +6,7 @@ The source code for TNBQ presented in *The Next Best Question: A Lazy-Anytime Fr
 - Download the data set from the links in each relevant folder.
 - Run `python main.py` using the following flags
   - `--dataset` - the dataset name, 
-  - `--method` - the method to test, out of 4 options `TNBQ`, `weighted`, `radius`, `global`
+  - `--method` - the method, out of 4 options `TNBQ`, `weighted`, `radius`, `global`
   - `--parameters` - the chosen method parameters. 
     - `TNBQ` - K
     - `weighted` - K min_scale max_scale
