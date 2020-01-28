@@ -1,0 +1,3 @@
+Each run will produce 2 results files -
+.png - of the accuracy improvement graph for every feature acquisition
+.txt - details of the run

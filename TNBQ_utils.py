@@ -6,31 +6,6 @@ import shap
 from tqdm import tqdm
 
 def K_nearest_neighbors(test_data, x_train, k, common, metric='euclidean', return_inverse_dists=False):
-    """
-    My implementation for K nearest neighbors (for runtime reasons).
-
-    Parameters
-    ----------
-    test_data : pd.Series
-        The masked test data.
-    x_train : pd.DataFrame
-        The training data.
-    k : int
-        Number of neighbors.
-    common : list
-        The available features in the masked test data.
-    metric : str
-        The metric to be used for distance calculation - from scipy.saptial.distance.cdist
-    return_inverse_dists : bool
-        Whether to return the inverse-distance of each neighbor
-
-    Returns
-    -------
-    indices :
-        The indices of the closest k neighbors (euclidean distance).
-    weights :
-        The inverse distance of closest k neighbors.
-    """
 
     to_search = test_data.values
     x_train_common_features = x_train.values[:, common]
@@ -68,30 +43,7 @@ def K_nearest_neighbors(test_data, x_train, k, common, metric='euclidean', retur
 
 
 def radius_neighborhood(test_data, x_train, common, metric='euclidean', dist_th=0.5, min_neighborhood_size=15, max_neigborhood_size=100):
-    """
-    My implementation for radius neighborhood.
 
-    Parameters
-    ----------
-    test_data : pd.DataFrame
-        The masked test data.
-    x_train : pd.DataFrame
-        The training data.
-    common : list
-        The available features in the masked test data.
-    metric : str
-        The metric to be used for distance calculation - from scipy.saptial.distance.cdist
-    dist_th : float
-        The distance threshold to the neighborhood radius.
-    max_neigborhood_size : int
-        The maximum number of samples in the neighborhood to keep.
-    min_neighborhood_size : int
-        The minimum number of samples in the neighborhood to pick.
-    Returns
-    -------
-    indices :
-        The indices of the neighbors closer than dist_th (euclidean distance).
-    """
 
     to_search = test_data.values
     x_train_common_features = x_train.values[:, common]
@@ -128,31 +80,6 @@ already_calculated_shap_idxs = {}
 
 def feature_importance_by_KNN(X_train, y_test, model, knn_idxs, masked_data_filling, verbose=False, knn_weights=None,
                               scale_range=(0.2,1)):
-    """
-    Calculates the feature importance of each "neighborhood" in knn_idxs (=each row in this 2d-array).
-
-    Parameters
-    ----------
-    X_train : pd.DataFrame
-        The training data to locate the neighbors from.
-    y_test : pd.Series
-        The labels of the test set, used to check if a multi class / binary.
-    model : xgboost.XGBClassifier or sklearn.ensemble.RandomForestClassifier
-        A model to interpret and calculate the Shapley values by, trained model over X_train.
-    knn_idxs : 2d-array
-        The indices of the K-nearest-neighbors of each sample. (the product of find_knn)
-    masked_data_filling : dictionary
-        The filling of the masked data. (the product of mask_data)
-    verbose : bool
-        If true, prints the iterations status.
-    scale_range : tuple
-        Tuple of the MinMax scaling bounds.
-    Returns
-    -------
-    res :
-        For each instance in the test set - The features sorted by their importance (same dimensions as knn_idxs).
-        { row_index: [1_most_important_feature, ... , n_most_important_feature] }
-    """
 
     is_multiclass = False
     assert len(y_test.value_counts()) >= 2

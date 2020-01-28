@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import MinMaxScaler, LabelEncoder, StandardScaler
+from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 from collections import defaultdict
 
@@ -112,11 +112,6 @@ def read_preprocess_miniboone():
     TRAIN_SIZE = 45359
     VAL_SIZE = 19439
     TEST_SIZE = 64798
-
-    # JUST FOR RUNNING FAST FOR TESTING THE PIPELINE
-    # TRAIN_SIZE = 1000
-    # VAL_SIZE = 2000
-    # TEST_SIZE = 3000
 
     data = data.sample(frac=1)
 

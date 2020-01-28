@@ -5,31 +5,6 @@ from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 from datetime import datetime
 
 def mask_data(df, n, _seed ,ignore=[]):
-    """
-    Mask n features randomly of a given dataframe.
-    This function is used for the experiments.
-
-    Parameters
-    ----------
-    df : pd.DataFrame
-        The dataframe to mask features from.
-
-    n : int
-        Number of features to mask.
-
-    ignore : list
-        list of features names (as strings) to ignore when choosing random features to mask.
-
-    Returns
-    -------
-    masked_data : pd.DataFrame
-        The masked dataframe.
-
-    masked_data_filling : Dictionary
-        The filling of the masked data.
-        { record_index: {feature_name: feature_value} }
-    """
-
     df = df.copy()
     vals = df.values
 
@@ -64,23 +39,6 @@ def _current_time_string():
 
 
 def save_results(acc_lst, method, parameters, _seed, title):
-    """
-    Compare between lists of metric's values and presents a plot.
-
-    Parameters
-    ----------
-    acc_lst : list
-        A list of accuracy values after each feature acquisition.
-    method : list of strings.
-        The method used to generate each internal list in 'aucs'.
-    parameters : str
-        The used metric.
-    _seed : str
-        The name of the experiment.
-    title : str
-        The
-    """
-
     title += ' - accuracy per feature acquisition'
     fig, ax = plt.subplots(figsize=(10, 6))
 
@@ -110,10 +68,4 @@ def save_results(acc_lst, method, parameters, _seed, title):
     f.write('Seed: ' + str(_seed) + '\n')
     f.write('Accuracy after each feature acquisition: ' + str(acc_lst) + '\n')
     f.close()
-    # for i in range(len(names)):
-    #     name = names[i]
-    #     res = str(acc_lst[i])
-    #     f.write(name + '\n')
-    #     f.write(res + '\n\n')
-    # f.close()
 

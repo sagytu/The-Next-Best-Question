@@ -78,7 +78,6 @@ def global_shap_baseline(X_train, X_test_masked, y_test, model, n_masked, mask_d
                 X_test_masked.set_value(rec_i, f_name, mask_data_filling[rec_i][f_name])
 
         acc_lst.append(metric_func(y_test, model.predict(X_test_masked)))
-        print(acc_lst)
     return acc_lst
 
 
@@ -155,13 +154,6 @@ def the_next_best_question(X_train, X_test_masked, y_test, model, n_masked, mask
 
         acc_knn.append(metric_func(y_test, model.predict(X_test_masked)))
 
-        if _i % 25 == 0:
-            print('Feature', _i, 'results:')
-            print(acc_knn)
-
-        # NEED TO REMOVE THIS - JUST A LIMITATION FOR HIGH DIMENSIONAL DATASETS --->
-        if _i == 30:
-            break
     return acc_knn
 
 
@@ -243,7 +235,6 @@ def the_next_best_question_weighted(X_train, X_test_masked, y_test, model, n_mas
                 del mask_data_filling[rec_i][most_valuable_f]
 
         acc_lst.append(metric_func(y_test, model.predict(X_test_masked)))
-        print(acc_lst)
     return acc_lst
 
 
@@ -324,7 +315,6 @@ def the_next_best_question_radius_neighborhood(X_train, X_test_masked, y_test, m
                 del mask_data_filling[rec_i][most_valuable_f]
 
         aucs_knn.append(metric_func(y_test, model.predict(X_test_masked)))
-        print(aucs_knn)
     return aucs_knn
 
 

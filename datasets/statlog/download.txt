@@ -1,0 +1,4 @@
+1. Download the dataset from the following link:
+http://archive.ics.uci.edu/ml/datasets/statlog+(heart)
+
+2. Extract it from .rar into ..//statlog//
