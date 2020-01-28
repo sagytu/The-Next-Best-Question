@@ -7,7 +7,7 @@ The source code for TNBQ presented in *The Next Best Question: A Lazy-Anytime Fr
 - Run `python main.py` using the following flags
   - `--dataset` - the dataset name, 
   - `--method` - the method, out of 4 options `TNBQ`, `weighted`, `radius`, `global`
-  - `--parameters` - the chosen method parameters. 
+  - `--parameters` - the chosen method's parameters. 
     - `TNBQ` - K
     - `weighted` - K min_scale max_scale
     - `raiuds` - threshold min_neighborhood_size max_neighborhood_size
